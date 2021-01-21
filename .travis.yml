@@ -1,0 +1,10 @@
+sudo: required
+os: linux
+services:
+  - docker
+
+before_install:
+  - docker build -t tsaarin/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true tsaarin/docker-react npm run test
